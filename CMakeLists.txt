@@ -1,15 +1,16 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(OS_LABS C CXX)
+    set(CMAKE_CXX_COMPILER "C:/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/g++.exe")
+        set(CMAKE_C_COMPILER "C:/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/gcc.exe")
 
-enable_testing()
+            project(OS_LABS C CXX)
 
-if (MSVC)
-    add_compile_options(/W4 /WX)
-else()
-    add_compile_options(-Wall -Wextra -pedantic -Werror)
-endif()
+                enable_testing()
 
-add_subdirectory(lab1)
-
-add_subdirectory(tests)
+                    if (MSVC)
+                        add_compile_options(/W4 /WX) 
+                    else()
+                            add_compile_options(-Wall -lstdc++fs)
+                                endif()
+                                    add_subdirectory(lab2)
+                                    add_subdirectory(tests)
