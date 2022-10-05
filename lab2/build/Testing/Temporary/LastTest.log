@@ -1,0 +1,29 @@
+Start testing: Oct 03 19:44 RTZ 2 (çèìà)
+----------------------------------------------------------
+1/1 Testing: lab1_test
+1/1 Test: lab1_test
+Command: "C:/project/OS_mai/build/tests/lab1_test.exe"
+Directory: C:/project/OS_mai/build/tests
+"lab1_test" start time: Oct 03 19:44 RTZ 2 (çèìà)
+Output:
+----------------------------------------------------------
+Running main() from C:\project\OS_mai\build\_deps\googletest-src\googletest\src\gtest_main.cc
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FirstLabTests
+[ RUN      ] FirstLabTests.SimpleTest
+[       OK ] FirstLabTests.SimpleTest (29 ms)
+[----------] 1 test from FirstLabTests (29 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (29 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"lab1_test" end time: Oct 03 19:44 RTZ 2 (çèìà)
+"lab1_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 03 19:44 RTZ 2 (çèìà)

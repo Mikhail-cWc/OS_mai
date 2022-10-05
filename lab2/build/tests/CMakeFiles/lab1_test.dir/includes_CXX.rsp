@@ -1,0 +1,1 @@
+-IC:/project/OS_mai/tests/../lab2/include -isystem "C:/project/OS_mai/build/_deps/googletest-src/googletest/include" -isystem "C:/project/OS_mai/build/_deps/googletest-src/googletest"
