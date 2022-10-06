@@ -1,4 +1,4 @@
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 add_executable(child1
 	src/child1.cpp
@@ -13,12 +13,9 @@ target_include_directories(child2 PRIVATE include)
 
 add_executable(lab2
 	main.cpp
-	include/utils.h
-	src/utils.cpp
-	include/parent.h
 	src/parent.cpp
+	include/utils.h src/utils.cpp
 	)
-
 
 target_include_directories(lab2 PRIVATE include)
 
