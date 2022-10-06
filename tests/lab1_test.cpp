@@ -6,7 +6,6 @@
 #include <memory>
 #include "parent.h"
 
-
 TEST(FirstLabTests, SimpleTest)
 {
     const char *fileWithInput = "input.txt";
@@ -74,5 +73,4 @@ TEST(FirstLabTests, SimpleTest)
         outFile2 >> result;
         EXPECT_EQ(result, i);
     }
-
 }

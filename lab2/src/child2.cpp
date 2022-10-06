@@ -23,7 +23,8 @@ int main(void)
 
 		std::reverse(s.begin(), s.end());
 		s += "\n";
-		bSuccess = WriteFile(hStdout, s.c_str(), s.size(), &dwWritten, NULL);
+		bSuccess = WriteFile(hStdout,
+									s.c_str(), s.size(), &dwWritten, NULL);
 		if (!bSuccess)
 			break;
 	}
