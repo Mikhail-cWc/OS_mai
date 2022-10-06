@@ -45,8 +45,10 @@ int ParentRoutine(std::string inFileName) //, std::string outFileName1, std::str
 	std::getline(inFile, outFileName1);
 	std::getline(inFile, outFileName2);
 	//  Доступ к записи,,,всегда создавать(перезаписывать) файл, не уст. др. атрибуты,
-	g_hOutputFile1 = CreateFile((LPCSTR)outFileName1.c_str(), FILE_SHARE_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-	g_hOutputFile2 = CreateFile((LPCSTR)outFileName2.c_str(), FILE_SHARE_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	g_hOutputFile1 = CreateFile((LPCSTR)outFileName1.c_str(),
+										 FILE_SHARE_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	g_hOutputFile2 = CreateFile((LPCSTR)outFileName2.c_str(),
+										 FILE_SHARE_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	WriteToPipe(g_hChildStd_IN_Wr, g_hChildStd_IN_Wr_2, inFile);
 	ReadFromPipe(g_hChildStd_OUT_Rd, g_hOutputFile1);
@@ -78,16 +80,17 @@ void CreateChildProcess(HANDLE ChildStd_OUT_Wr, HANDLE ChildStd_IN_Rd, std::stri
 	siStartInfo.hStdInput = ChildStd_IN_Rd;
 	siStartInfo.dwFlags |= STARTF_USESTDHANDLES;
 
-	bSuccess = CreateProcess(NULL,
-									 szCmdline,		// command line
-									 NULL,			// process security attributes
-									 NULL,			// primary thread security attributes
-									 TRUE,			// handles are inherited
-									 0,				// creation flags
-									 NULL,			// use parent's environment
-									 NULL,			// use parent's current directory
-									 &siStartInfo, // STARTUPINFO pointer
-									 &piProcInfo); // receives PROCESS_INFORMATION
+	bSuccess = CreateProcess
+	(NULL,
+	szCmdline,		// command line
+	NULL,			// process security attributes
+	NULL,			// primary thread security attributes
+	TRUE,			// handles are inherited
+	0,				// creation flags
+	NULL,			// use parent's environment
+	NULL,			// use parent's current directory
+	 &siStartInfo, // STARTUPINFO pointer
+	&piProcInfo); // receives PROCESS_INFORMATION
 
 	if (!bSuccess)
 		std::cout << "Error created process\n";

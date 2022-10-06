@@ -13,13 +13,15 @@ void WriteToPipe(HANDLE g_hChildStd_IN_Wr, HANDLE g_hChildStd_IN_Wr_2, std::ifst
 		s += "\n";
 		if ((s.size() - 1) % 2 == 1)
 		{
-			bSuccess = WriteFile(g_hChildStd_IN_Wr, s.c_str(), s.size(), &dwWritten, NULL);
+			bSuccess = WriteFile(g_hChildStd_IN_Wr, s.c_str(),
+										s.size(), &dwWritten, NULL);
 			if (!bSuccess)
 				break;
 		}
 		else
 		{
-			bSuccess = WriteFile(g_hChildStd_IN_Wr_2, s.c_str(), s.size(), &dwWritten, NULL);
+			bSuccess = WriteFile(g_hChildStd_IN_Wr_2, s.c_str(),
+										s.size(), &dwWritten, NULL);
 			if (!bSuccess)
 				break;
 		}
@@ -42,7 +44,8 @@ void ReadFromPipe(HANDLE g_hChildStd_OUT_Rd, HANDLE g_hOutputFile)
 
 	for (;;)
 	{
-		bSuccess = ReadFile(g_hChildStd_OUT_Rd, chBuf, BUFSIZE, &dwRead, NULL);
+		bSuccess = ReadFile(g_hChildStd_OUT_Rd, chBuf,
+								  BUFSIZE, &dwRead, NULL);
 		if (!bSuccess || dwRead == 0)
 			break;
 
