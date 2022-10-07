@@ -7,14 +7,11 @@
 int main(void)
 {
 	DWORD dwWritten;
-	HANDLE hStdin, hStdout;
+	HANDLE hStdout;
 	BOOL bSuccess;
 
 	hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-	hStdin = GetStdHandle(STD_INPUT_HANDLE);
-	if (
-		 (hStdout == INVALID_HANDLE_VALUE) ||
-		 (hStdin == INVALID_HANDLE_VALUE))
+	if (hStdout == INVALID_HANDLE_VALUE)
 		ExitProcess(1);
 
 	std::string s;

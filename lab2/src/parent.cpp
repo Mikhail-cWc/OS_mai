@@ -1,7 +1,6 @@
 #include "utils.h"
 #include "parent.h"
-int ParentRoutine(std::string inFileName) //, std::string outFileName1, std::string outFileName2)
-{
+int ParentRoutine(std::istream &inFile){
 	// pipe1 (child1)
 	// Cтандартный дескриптор ввода для доч. процесса
 	HANDLE g_hChildStd_IN_Rd = NULL;
@@ -43,9 +42,8 @@ int ParentRoutine(std::string inFileName) //, std::string outFileName1, std::str
 	CreateChildProcess(g_hChildStd_OUT_Wr, g_hChildStd_IN_Rd, child1);
 	CreateChildProcess(g_hChildStd_OUT_Wr_2, g_hChildStd_IN_Rd_2, child2);
 
-	auto inFile = std::ifstream(inFileName.c_str());
-
 	std::string outFileName1, outFileName2;
+
 	std::getline(inFile, outFileName1);
 	std::getline(inFile, outFileName2);
 	//  Доступ к записи,,,всегда создавать(перезаписывать) файл, не уст. др. атрибуты,

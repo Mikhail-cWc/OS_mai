@@ -1,11 +1,10 @@
 #include "utils.h"
 
-void WriteToPipe(HANDLE g_hChildStd_IN_Wr, HANDLE g_hChildStd_IN_Wr_2, std::ifstream &inFile)
+void WriteToPipe(HANDLE g_hChildStd_IN_Wr, HANDLE g_hChildStd_IN_Wr_2, std::istream &inFile)
 // Чтение из ifstream и запись его содержимого в каналы для дочерних STDIN.
 {
 	DWORD dwWritten;
 	BOOL bSuccess = FALSE;
-
 	std::string s;
 	while (std::getline(inFile, s))
 	{

@@ -2,8 +2,6 @@
 #include "parent.h"
 int main()
 {
-	std::string inFileName = "test.txt";
-
-	ParentRoutine(inFileName);
+	ParentRoutine(std::cin);
 	return 0;
 }
