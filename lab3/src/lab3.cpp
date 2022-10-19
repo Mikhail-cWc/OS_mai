@@ -1,48 +1,62 @@
 #include "lab3.h"
-#include "utils.h"
 
-#include <thread>
+PMYDATA mydata;
+DWORD WINAPI MatrixMultiplication(LPVOID param)
+{
+    int iNumm = *(reinterpret_cast<int *>(param));
 
-
-namespace {
-    void SumGivenRows(const TMatrix& lhs, const TMatrix& rhs, TMatrix& result, int firstRow, int lastRow) {
-        int m = isize(lhs);
-        for(int i = firstRow; i < lastRow; ++i) {
-            for(int j = 0; j < m; ++j) {
-                result[i][j] = lhs[i][j] + rhs[i][j];
-            }
+    for (int i = mydata->from[iNumm]; i < mydata->to[iNumm]; i++)
+    {
+        for (int j = 0; j < mydata->res[0].size(); j++)
+        {
+            mydata->res[i][j] = 0;
+            for (int z = 0; z < mydata->res.size(); z++)
+                mydata->res[i][j] += mydata->left[i][z] * mydata->right[z][j];
         }
     }
+
+    return 0;
 }
 
-TMatrix SumMatrices(const TMatrix& lhs, const TMatrix& rhs, int threadCount) {
-    TMatrix result(lhs.size(), std::vector<int>(lhs[0].size()));
+ComplexMatrix Parallelization(ComplexMatrix left, ComplexMatrix right, int threads)
+{
+    mydata = (PMYDATA)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
+                                sizeof(MYDATA));
+    vector<int> to(threads, 0);
+    vector<int> from(threads, 0);
+    ComplexMatrix res(left.size(), vector<complex<double>>(right[0].size(), 0));
+    mydata->to = to;
+    mydata->from = from;
+    mydata->left = left;
+    mydata->right = right;
+    mydata->res = res;
+    mydata->q = mydata->left.size() / threads;
+    mydata->r = mydata->left.size() % threads;
+    HANDLE hThreads[threads];
+    LPDWORD id;
+    int noms[threads];
 
-    if(threadCount > 1) {
-        int actualThreads = std::min(threadCount, isize(result));
+    for (int i = 0; i < threads; i++)
+    {
+        mydata->to[i] = mydata->from[i] + mydata->q + (i < mydata->r ? 1 : 0);
+        noms[i] = i;
+        hThreads[i] = CreateThread(NULL, 0, MatrixMultiplication, (LPVOID)(noms + i), 0, id);
+        if (i < threads - 1)
+            mydata->from[i + 1] = mydata->to[i];
 
-        std::vector<std::thread> threads;
-        threads.reserve(actualThreads);
-
-        int rowsPerThread = isize(result) / actualThreads;
-
-        for(int i = 0; i < isize(result); i += rowsPerThread) {
-            if(i + rowsPerThread >= isize(result)) {
-                threads.emplace_back(SumGivenRows, std::ref(lhs), std::ref(rhs), std::ref(result), i, isize(result));
-            } else {
-                threads.emplace_back(SumGivenRows, std::ref(lhs), std::ref(rhs), std::ref(result),
-                                     i, i + rowsPerThread);
-            }
-        }
-
-        for(auto& thread : threads) {
-            thread.join();
-        }
-    } else {
-        SumGivenRows(lhs, rhs, result, 0, lhs.size());
+        if (hThreads[i] == NULL)
+            cout << "ERROR CREATE THREADS - " << i << endl;
     }
 
+    WaitForMultipleObjects(threads, hThreads, TRUE, INFINITE);
+
+    for (int i = 0; i < threads; i++)
+        CloseHandle(hThreads[i]);
+
+    ComplexMatrix result = mydata->res;
+
+    HeapFree(GetProcessHeap(), 0, mydata);
+    mydata = NULL;
 
     return result;
 }
-

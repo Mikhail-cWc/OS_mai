@@ -12,6 +12,8 @@ if (MSVC)
 else()
     add_compile_options(-Wall -lstdc++fs)
 endif()
+include(FindThreads)
 
+add_subdirectory(lab3)
 add_subdirectory(lab2)
 add_subdirectory(tests)
