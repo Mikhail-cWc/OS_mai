@@ -25,19 +25,24 @@ ComplexMatrix Parallelization(ComplexMatrix left, ComplexMatrix right, int threa
     vector<int> to(threads, 0);
     vector<int> from(threads, 0);
     ComplexMatrix res(left.size(), vector<complex<double>>(right[0].size(), 0));
-    mydata->to = to;
-    mydata->from = from;
     mydata->left = left;
     mydata->right = right;
     mydata->res = res;
+
+    // Данные переменные нужны для распределения вычислений по потокам
     mydata->q = mydata->left.size() / threads;
     mydata->r = mydata->left.size() % threads;
+    mydata->to = to;
+    mydata->from = from;
+
     HANDLE hThreads[threads];
     LPDWORD id;
     int noms[threads];
 
     for (int i = 0; i < threads; i++)
     {
+        // У последнего потока будет четное кол-во строк для вычислений
+        // При условии что в матрице строк нечетное кол-во
         mydata->to[i] = mydata->from[i] + mydata->q + (i < mydata->r ? 1 : 0);
         noms[i] = i;
         hThreads[i] = CreateThread(NULL, 0, MatrixMultiplication, (LPVOID)(noms + i), 0, id);
