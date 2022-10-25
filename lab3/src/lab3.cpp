@@ -1,7 +1,7 @@
 #include "lab3.h"
 
-PMYDATA mydata;
-DWORD WINAPI MatrixMultiplication(LPVOID param)
+MYDATA *mydata;
+unsigned long WINAPI MatrixMultiplication(LPVOID param)
 {
     int iNumm = *(reinterpret_cast<int *>(param));
 
@@ -18,20 +18,20 @@ DWORD WINAPI MatrixMultiplication(LPVOID param)
     return 0;
 }
 
-ComplexMatrix Parallelization(ComplexMatrix left, ComplexMatrix right, int threads)
+TComplexMatrix Parallelization(TComplexMatrix left, TComplexMatrix right, int threads)
 {
-    mydata = (PMYDATA)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
-                                sizeof(MYDATA));
-    vector<int> to(threads, 0);
-    vector<int> from(threads, 0);
-    ComplexMatrix res(left.size(), vector<complex<double>>(right[0].size(), 0));
+    mydata = (MYDATA *)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
+                                 sizeof(MYDATA));
+    std::vector<int> to(threads, 0);
+    std::vector<int> from(threads, 0);
+    TComplexMatrix res(left.size(), std::vector<std::complex<double>>(right[0].size(), 0));
     mydata->left = left;
     mydata->right = right;
     mydata->res = res;
 
     // Данные переменные нужны для распределения вычислений по потокам
-    mydata->q = mydata->left.size() / threads;
-    mydata->r = mydata->left.size() % threads;
+    int q = left.size() / threads;
+    int r = left.size() % threads;
     mydata->to = to;
     mydata->from = from;
 
@@ -43,14 +43,14 @@ ComplexMatrix Parallelization(ComplexMatrix left, ComplexMatrix right, int threa
     {
         // У последнего потока будет четное кол-во строк для вычислений
         // При условии что в матрице строк нечетное кол-во
-        mydata->to[i] = mydata->from[i] + mydata->q + (i < mydata->r ? 1 : 0);
+        mydata->to[i] = mydata->from[i] + q + (i < r ? 1 : 0);
         noms[i] = i;
         hThreads[i] = CreateThread(NULL, 0, MatrixMultiplication, (LPVOID)(noms + i), 0, id);
         if (i < threads - 1)
             mydata->from[i + 1] = mydata->to[i];
 
         if (hThreads[i] == NULL)
-            cout << "ERROR CREATE THREADS - " << i << endl;
+            std::cout << "ERROR CREATE THREADS - " << i << std::endl;
     }
 
     WaitForMultipleObjects(threads, hThreads, TRUE, INFINITE);
@@ -58,7 +58,7 @@ ComplexMatrix Parallelization(ComplexMatrix left, ComplexMatrix right, int threa
     for (int i = 0; i < threads; i++)
         CloseHandle(hThreads[i]);
 
-    ComplexMatrix result = mydata->res;
+   TComplexMatrix result = mydata->res;
 
     HeapFree(GetProcessHeap(), 0, mydata);
     mydata = NULL;

@@ -6,9 +6,9 @@
 
 namespace
 {
-    ComplexMatrix GenerateMatrix(int n, int m)
+    TComplexMatrix GenerateMatrix(int n, int m)
     {
-        ComplexMatrix result(n, vector<complex<double>>(m));
+        TComplexMatrix result(n, std::vector<std::complex<double>>(m));
 
         srand(time(nullptr));
 
@@ -16,7 +16,7 @@ namespace
         {
             for (int j = 0; j < m; ++j)
             {
-                result[i][j] = complex<double>(rand() % 100, rand() % 50);
+                result[i][j] = std::complex<double>(rand() % 100, rand() % 50);
             }
         }
 
@@ -24,7 +24,7 @@ namespace
     }
 }
 
-bool operator==(const ComplexMatrix &lhs, const ComplexMatrix &rhs)
+bool operator==(const TComplexMatrix &lhs, const TComplexMatrix &rhs)
 {
     if (lhs.size() != rhs.size())
     {
@@ -55,14 +55,14 @@ bool operator==(const ComplexMatrix &lhs, const ComplexMatrix &rhs)
 
 TEST(ThirdLabTests, SingleThreadYieldsCorrectResults)
 {
-    ComplexMatrix matr_1 = {{complex<double>(3, 0)}};
-    ComplexMatrix matr_2 = {{complex<double>(3, 0)}};
-    ComplexMatrix res = {{complex<double>(9, 0)}};
+    TComplexMatrix matr_1 = {{std::complex<double>(3, 0)}};
+    TComplexMatrix matr_2 = {{std::complex<double>(3, 0)}};
+    TComplexMatrix res = {{std::complex<double>(9, 0)}};
     EXPECT_EQ(Parallelization(matr_1, matr_2, 1), res);
 
-    ComplexMatrix matr_3 = {{complex<double>(3, 5), complex<double>(2, 7)}, {complex<double>(8, 2), complex<double>(4, 2)}};
-    ComplexMatrix matr_4 = {{complex<double>(1, 2), complex<double>(3, 4)}, {complex<double>(5, 6), complex<double>(7, 8)}};
-    ComplexMatrix res2 = {{complex<double>(-39, 58), complex<double>(-53, 92)}, {complex<double>(12, 52), complex<double>(28, 84)}};
+    TComplexMatrix matr_3 = {{std::complex<double>(3, 5), std::complex<double>(2, 7)}, {std::complex<double>(8, 2), std::complex<double>(4, 2)}};
+    TComplexMatrix matr_4 = {{std::complex<double>(1, 2), std::complex<double>(3, 4)}, {std::complex<double>(5, 6), std::complex<double>(7, 8)}};
+    TComplexMatrix res2 = {{std::complex<double>(-39, 58), std::complex<double>(-53, 92)}, {std::complex<double>(12, 52), std::complex<double>(28, 84)}};
     EXPECT_EQ(Parallelization(matr_3, matr_4, 1), res2);
 }
 
@@ -81,9 +81,9 @@ TEST(ThirdLabTest, ThreadConfigurations)
     };
 
     performTestForGivenSize(3, 3, 3, 2);
-    performTestForGivenSize(10, 10, 10, 2);
-    performTestForGivenSize(100, 100, 100, 3);
-    performTestForGivenSize(600, 600, 600, 4);
+    performTestForGivenSize(10, 13, 14, 2);
+    performTestForGivenSize(100, 152, 523, 3);
+    performTestForGivenSize(500, 500, 500, 4);
 }
 
 TEST(ThirdLabTest, PerfomanceTest)
@@ -102,7 +102,7 @@ TEST(ThirdLabTest, PerfomanceTest)
             auto begin = std::chrono::high_resolution_clock::now();
             Parallelization(m1, m2, threadCount);
             auto end = std::chrono::high_resolution_clock::now();
-            avg += chrono::duration_cast<chrono::milliseconds>(end - begin).count();
+            avg += std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
         }
 
         return avg / runsCount;
@@ -111,8 +111,8 @@ TEST(ThirdLabTest, PerfomanceTest)
     auto singleThread = getAvgTime(1);
     auto multiThread = getAvgTime(4);
 
-    cout << "Avg time for 1 thread: " << singleThread << '\n';
-    cout << "Avg time for 4 threads: " << multiThread << '\n';
+    std::cout << "Avg time for 1 thread: " << singleThread << '\n';
+    std::cout << "Avg time for 4 threads: " << multiThread << '\n';
 
     EXPECT_GE(singleThread, multiThread);
 }
