@@ -1,48 +1,67 @@
 #include "lab3.h"
-#include "utils.h"
 
-#include <thread>
+MYDATA *mydata;
+unsigned long WINAPI MatrixMultiplication(LPVOID param)
+{
+    int iNumm = *(reinterpret_cast<int *>(param));
 
-
-namespace {
-    void SumGivenRows(const TMatrix& lhs, const TMatrix& rhs, TMatrix& result, int firstRow, int lastRow) {
-        int m = isize(lhs);
-        for(int i = firstRow; i < lastRow; ++i) {
-            for(int j = 0; j < m; ++j) {
-                result[i][j] = lhs[i][j] + rhs[i][j];
-            }
+    for (int i = mydata->from[iNumm]; i < mydata->to[iNumm]; i++)
+    {
+        for (int j = 0; j < mydata->res[0].size(); j++)
+        {
+            mydata->res[i][j] = 0;
+            for (int z = 0; z < mydata->res.size(); z++)
+                mydata->res[i][j] += mydata->left[i][z] * mydata->right[z][j];
         }
     }
+
+    return 0;
 }
 
-TMatrix SumMatrices(const TMatrix& lhs, const TMatrix& rhs, int threadCount) {
-    TMatrix result(lhs.size(), std::vector<int>(lhs[0].size()));
+TComplexMatrix Parallelization(TComplexMatrix left, TComplexMatrix right, int threads)
+{
+    mydata = (MYDATA *)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
+                                 sizeof(MYDATA));
+    std::vector<int> to(threads, 0);
+    std::vector<int> from(threads, 0);
+    TComplexMatrix res(left.size(), std::vector<std::complex<double>>(right[0].size(), 0));
+    mydata->left = left;
+    mydata->right = right;
+    mydata->res = res;
 
-    if(threadCount > 1) {
-        int actualThreads = std::min(threadCount, isize(result));
+    // Данные переменные нужны для распределения вычислений по потокам
+    int q = left.size() / threads;
+    int r = left.size() % threads;
+    mydata->to = to;
+    mydata->from = from;
 
-        std::vector<std::thread> threads;
-        threads.reserve(actualThreads);
+    HANDLE hThreads[threads];
+    LPDWORD id;
+    int noms[threads];
 
-        int rowsPerThread = isize(result) / actualThreads;
+    for (int i = 0; i < threads; i++)
+    {
+        // У последнего потока будет четное кол-во строк для вычислений
+        // При условии что в матрице строк нечетное кол-во
+        mydata->to[i] = mydata->from[i] + q + (i < r ? 1 : 0);
+        noms[i] = i;
+        hThreads[i] = CreateThread(NULL, 0, MatrixMultiplication, (LPVOID)(noms + i), 0, id);
+        if (i < threads - 1)
+            mydata->from[i + 1] = mydata->to[i];
 
-        for(int i = 0; i < isize(result); i += rowsPerThread) {
-            if(i + rowsPerThread >= isize(result)) {
-                threads.emplace_back(SumGivenRows, std::ref(lhs), std::ref(rhs), std::ref(result), i, isize(result));
-            } else {
-                threads.emplace_back(SumGivenRows, std::ref(lhs), std::ref(rhs), std::ref(result),
-                                     i, i + rowsPerThread);
-            }
-        }
-
-        for(auto& thread : threads) {
-            thread.join();
-        }
-    } else {
-        SumGivenRows(lhs, rhs, result, 0, lhs.size());
+        if (hThreads[i] == NULL)
+            std::cout << "ERROR CREATE THREADS - " << i << std::endl;
     }
 
+    WaitForMultipleObjects(threads, hThreads, TRUE, INFINITE);
+
+    for (int i = 0; i < threads; i++)
+        CloseHandle(hThreads[i]);
+
+   TComplexMatrix result = mydata->res;
+
+    HeapFree(GetProcessHeap(), 0, mydata);
+    mydata = NULL;
 
     return result;
 }
-

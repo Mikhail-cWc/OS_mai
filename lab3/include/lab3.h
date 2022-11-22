@@ -2,9 +2,26 @@
 #define OS_LABS_LAB3_H
 
 #include <vector>
+#include <complex>
+#include <windows.h>
+#include <process.h>
+#include <ctime>
+#include <iostream>
+#include <chrono>
 
-using TMatrix = std::vector<std::vector<int>>;
+using TComplexMatrix = std::vector<std::vector<std::complex<double>>>;
 
-TMatrix SumMatrices(const TMatrix& lhs, const TMatrix& rhs, int threadCount);
+struct MYDATA
+{
 
-#endif //OS_LABS_LAB3_H
+	TComplexMatrix right;
+	TComplexMatrix left;
+	TComplexMatrix res;
+	std::vector<int> from, to;
+};
+
+DWORD WINAPI MatrixMultiplication(LPVOID param);
+
+TComplexMatrix Parallelization(TComplexMatrix left, TComplexMatrix right, int threads);
+
+#endif // OS_LABS_LAB3_H
