@@ -1,15 +1,15 @@
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(child1
+add_executable(child3
 	src/child1.cpp
 )
 
-target_include_directories(child1 PRIVATE include)
+target_include_directories(child3 PRIVATE include)
 
-add_executable(child2
+add_executable(child4
 	src/child2.cpp
 )
-target_include_directories(child2 PRIVATE include)
+target_include_directories(child4 PRIVATE include)
 
 add_executable(lab4
 	main.cpp

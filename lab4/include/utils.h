@@ -8,9 +8,6 @@
 #include <fstream>
 #include <algorithm>
 
-#define BUFSIZE 4096
-
-void WriteToPipe(HANDLE g_hChildStd_IN_Wr, HANDLE g_hChildStd_IN_Wr_2, std::istream &inFile);
-void ReadFromPipe(HANDLE g_hChildStd_OUT_Rd, HANDLE g_hOutputFile);
+void WriteToMapFile(std::istream &inFile, LPVOID lpMapAdress);
 
 #endif // INC_1_UTILS_H
