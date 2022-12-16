@@ -8,6 +8,6 @@
 #include <fstream>
 
 int ParentRoutine(std::istream &inFile);
-HANDLE CreateChildProcess(std::string child);
+HANDLE CreateChildProcess(char *child);
 
 #endif // OS_LABS_PARENT_H

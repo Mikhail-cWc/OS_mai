@@ -19,11 +19,11 @@ int main(void)
 
 	hMapFile = OpenFileMapping(FILE_MAP_ALL_ACCESS, FALSE, FileMapName);
 	if (hMapFile == NULL)
-		std::cerr << "ПРОЦЕСС 2. НЕВОЗМОЖНО ОТКРЫТЬ ОБЪЕКТ ПРОЕКЦИИ ФАЙЛА";
+		std::cerr << "PROCESS 2. UNABLE TO OPEN FILE PROJECTION OBJECT";
 
 	lpMapAddress = MapViewOfFile(hMapFile, FILE_MAP_ALL_ACCESS, 0, 0, 0);
 	if (lpMapAddress == NULL)
-		std::cerr << "ПРОЦЕСС 2. ПРЕДСТАВЛЕНИЕ ПРОЕЦИРОВАННОГО ФАЙЛА НЕ ВОЗМОЖНО";
+		std::cerr << "PROCESS 2. PROJECTED FILE PRESENTATION IS NOT POSSIBLE";
 
 	TCHAR *datafromfile = (TCHAR *)lpMapAddress;
 	std::string s(datafromfile);
@@ -49,7 +49,7 @@ int main(void)
 										 FILE_ATTRIBUTE_NORMAL, NULL);
 
 	if (g_hOutputFile1 == INVALID_HANDLE_VALUE)
-		std::cerr << "ПРОЦЕСС 2. ОШИБКА В СОЗДАНИИ ФАЙЛА ДЛЯ ВЫВОДА\n";
+		std::cerr << "PROCESS 2. ERROR IN CREATING THE OUTPUT FILE\n";
 
 	for (int j = i; j < s.size(); j++)
 	{
@@ -63,7 +63,7 @@ int main(void)
 				result += '\n';
 				if (!WriteFile(g_hOutputFile1, result.c_str(),
 									result.size(), &dwWritten, NULL))
-					std::cerr << "ПРОЦЕСС 2. ОШИБКА ЗАПИСИ\n";
+					std::cerr << "PROCESS 2. WRITE ERROR\n";
 			}
 			result = "";
 		}

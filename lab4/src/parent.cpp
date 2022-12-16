@@ -7,8 +7,10 @@ int ParentRoutine(std::istream &inFile)
 	HANDLE hFile;
 	LPVOID lpMapAddress;
 
-	std::string child1 = "..\\lab4\\child3.exe";
-	std::string child2 = "..\\lab4\\child4.exe";
+	char child1[512];
+	char child2[512];
+	ExpandEnvironmentStrings("%FIRST_PROCESS%", (char *)child1, sizeof(child1));
+	ExpandEnvironmentStrings("%SECOND_PROCESS%", (char *)child2, sizeof(child2));
 
 	TCHAR *lpcTheFile = TEXT("fmtest.txt");
 
@@ -48,20 +50,15 @@ int ParentRoutine(std::istream &inFile)
 	return 0;
 }
 
-HANDLE CreateChildProcess(std::string child)
+HANDLE CreateChildProcess(char *child)
 {
-	// string -> TCHAR
-	TCHAR *szCmdline = 0;
-	szCmdline = new TCHAR[child.size() + 1];
-	copy(child.begin(), child.end(), szCmdline);
-	szCmdline[child.size()] = 0;
 
 	PROCESS_INFORMATION piProcInfo = {0};
 	STARTUPINFO siStartInfo = {0};
 	BOOL bSuccess = FALSE;
 
 	bSuccess = CreateProcess(NULL,
-									 szCmdline,		// command line
+									 child,			// command line
 									 NULL,			// process security attributes
 									 NULL,			// primary thread security attributes
 									 TRUE,			// handles are inherited
