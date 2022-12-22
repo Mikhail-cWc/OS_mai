@@ -9,8 +9,8 @@
 TEST(FirstLabTests, SimpleTest)
 {
     const char *fileWithInput = "input.txt";
-    const char *fileWithOutput1 = "output1.txt";
     const char *fileWithOutput2 = "output2.txt";
+    const char *fileWithOutput1 = "output1.txt";
 
     constexpr int inputSize = 8;
     constexpr int outputSize = 4;
@@ -25,10 +25,10 @@ TEST(FirstLabTests, SimpleTest)
         "337546",
         "123"};
 
-    std::array<int, outputSize> expectedOutput1 = {
+    std::array<int, outputSize> expectedOutput2 = {
         230, 54321, 123456789, 321};
 
-    std::array<int, outputSize> expectedOutput2 = {
+    std::array<int, outputSize> expectedOutput1 = {
         4321, 654321, 3649, 645733};
 
     {
