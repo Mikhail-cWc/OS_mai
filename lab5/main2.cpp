@@ -2,7 +2,7 @@
 
 int main()
 {
-	programm2(std::cin);
+	programm1(std::cin);
 	system("PAUSE");
 
 	return 0;

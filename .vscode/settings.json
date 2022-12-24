@@ -46,7 +46,16 @@
 		"type_traits": "cpp",
 		"tuple": "cpp",
 		"typeinfo": "cpp",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"any": "cpp",
+		"atomic": "cpp",
+		"condition_variable": "cpp",
+		"cstddef": "cpp",
+		"functional": "cpp",
+		"iomanip": "cpp",
+		"mutex": "cpp",
+		"thread": "cpp",
+		"variant": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }
