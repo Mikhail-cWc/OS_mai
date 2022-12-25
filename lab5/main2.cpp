@@ -2,8 +2,9 @@
 
 int main()
 {
-	programm1(std::cin);
-	system("PAUSE");
+	const char *fileWithOutput1 = "output1.txt";
+
+	programm2(std::cin, fileWithOutput1);
 
 	return 0;
 }

@@ -1,15 +1,17 @@
 #include "utils.h"
 
-int programm2(std::istream &inFile)
+int programm2(std::istream &inFile, const char *fileWithOutput2)
 {
+	std::ofstream outFile(fileWithOutput2);
+
 	HINSTANCE hinstLib;
 	MYPROC Pi, E;
 	bool flag = FALSE;
 	std::string command;
 
-	std::cout << std::fixed;
+	outFile << std::fixed;
 
-	std::cout.precision(15);
+	outFile.precision(15);
 
 	hinstLib = LoadLibrary(TEXT("libmath.dll"));
 
@@ -23,7 +25,7 @@ int programm2(std::istream &inFile)
 		{
 			if (command[0] == '0')
 			{
-				std::cout << "Swithing the implementation of mathematical function\n";
+				outFile << "Swithing_the_implementation_of_mathematical_function\n";
 				if (!flag)
 				{
 					Pi = (MYPROC)GetProcAddress(hinstLib, "Pi_V2");
@@ -41,22 +43,22 @@ int programm2(std::istream &inFile)
 			if (command[0] == '1')
 			{
 				if (NULL != Pi && flag)
-					std::cout << Pi(argument(command)) << std::endl;
+					outFile << Pi(argument(command)) << std::endl;
 				else if (NULL != Pi)
-					std::cout << Pi(argument(command)) * 4 << std::endl;
+					outFile << Pi(argument(command)) * 4 << std::endl;
 				else
 					std::cerr << "Error load proc Pi\n";
 			}
 			if (command[0] == '2')
 			{
 				if (NULL != E)
-					std::cout << E(argument(command)) << std::endl;
+					outFile << E(argument(command)) << std::endl;
 				else
 					std::cerr << "Error load proc E\n";
 			}
 
 			if (command[0] != '0' && command[0] != '1' && command[0] != '2')
-				std::cout << "invalid command\n";
+				outFile << "invalid_command\n";
 		}
 		// Free the DLL module.
 		if (!FreeLibrary(hinstLib))
@@ -66,12 +68,4 @@ int programm2(std::istream &inFile)
 		std::cerr << "Error load library DLL\n";
 
 	return 0;
-}
-
-int argument(std::string s)
-{
-	std::string res = "";
-	for (int i = 2; i < s.size(); i++)
-		res += s[i];
-	return std::stoi(res);
 }

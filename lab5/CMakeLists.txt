@@ -15,13 +15,13 @@ add_library(math SHARED ${SOURCE_LIB})
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(lab5_2
-	main.cpp
+	main2.cpp
 	src/programm2.cpp
 	include/utils.h
 )
 
 add_executable(lab5_1
-	main2.cpp
+	main1.cpp
 	src/programm1.cpp
 	lib/MathUnit.h
 	include/utils.h

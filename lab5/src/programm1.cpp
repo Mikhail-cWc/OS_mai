@@ -12,25 +12,28 @@ int argument(std::string s)
 	return std::stoi(res);
 }
 
-int programm1(std::istream &inFile)
+int programm1(std::istream &inFile, const char *fileWithOutput1)
 {
+	std::ofstream outFile(fileWithOutput1);
+
 	std::string command;
 
-	std::cout << std::fixed;
+	outFile << std::fixed;
 
-	std::cout.precision(15);
+	outFile.precision(15);
 
 	while (std::getline(inFile, command))
 	{
 
 		if (command[0] == '1')
-			std::cout << Pi_V1(argument(command)) << std::endl;
+			outFile << Pi_V1(argument(command)) * 4 << std::endl;
 
 		if (command[0] == '2')
-			std::cout << E_V1(argument(command)) << std::endl;
+			outFile << E_V1(argument(command)) << std::endl;
 
 		if (command[0] != '1' && command[0] != '2')
-			std::cout << "invalid command\n";
+			outFile << "invalid_command\n";
 	}
+	outFile.close();
 	return 0;
 }
