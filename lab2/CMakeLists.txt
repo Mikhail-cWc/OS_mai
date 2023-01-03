@@ -1,12 +1,12 @@
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(child1
+add_executable(child11
 	src/child1.cpp
 )
 
 target_include_directories(child1 PRIVATE include)
 
-add_executable(child2
+add_executable(child22
 	src/child2.cpp
 )
 target_include_directories(child2 PRIVATE include)
