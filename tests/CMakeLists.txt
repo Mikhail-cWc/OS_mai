@@ -35,7 +35,6 @@ add_executable(lab5_test lab5_test.cpp ../lab5/include/utils.h ../lab5/src/progr
 
 target_link_libraries(lab5_test C:/OS_mai/lab5/lib/libmath.dll GTest::GTest)
 
-#target_link_libraries(lab5_test PRIVATE GTest::GTest)
 target_include_directories(lab5_test PRIVATE ../lab5/include)
 
 add_test(lab5_test lab5_test)
