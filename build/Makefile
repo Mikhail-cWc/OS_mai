@@ -354,30 +354,56 @@ gtest_main/fast:
 .PHONY : gtest_main/fast
 
 #=============================================================================
-# Target rules for targets named lab6_2
+# Target rules for targets named A
 
 # Build rule for target.
-lab6_2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab6_2
-.PHONY : lab6_2
+A : cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 A
+.PHONY : A
 
 # fast build rule for target.
-lab6_2/fast:
-	$(MAKE) $(MAKESILENT) -f lab6/CMakeFiles/lab6_2.dir/build.make lab6/CMakeFiles/lab6_2.dir/build
-.PHONY : lab6_2/fast
+A/fast:
+	$(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/build
+.PHONY : A/fast
 
 #=============================================================================
-# Target rules for targets named lab6_1
+# Target rules for targets named B
 
 # Build rule for target.
-lab6_1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab6_1
-.PHONY : lab6_1
+B : cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 B
+.PHONY : B
 
 # fast build rule for target.
-lab6_1/fast:
-	$(MAKE) $(MAKESILENT) -f lab6/CMakeFiles/lab6_1.dir/build.make lab6/CMakeFiles/lab6_1.dir/build
-.PHONY : lab6_1/fast
+B/fast:
+	$(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/build
+.PHONY : B/fast
+
+#=============================================================================
+# Target rules for targets named C
+
+# Build rule for target.
+C : cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 C
+.PHONY : C
+
+# fast build rule for target.
+C/fast:
+	$(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/build
+.PHONY : C/fast
+
+#=============================================================================
+# Target rules for targets named kp
+
+# Build rule for target.
+kp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kp
+.PHONY : kp
+
+# fast build rule for target.
+kp/fast:
+	$(MAKE) $(MAKESILENT) -f kp/CMakeFiles/kp.dir/build.make kp/CMakeFiles/kp.dir/build
+.PHONY : kp/fast
 
 #=============================================================================
 # Target rules for targets named math
@@ -431,6 +457,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... A"
+	@echo "... B"
+	@echo "... C"
 	@echo "... child11"
 	@echo "... child22"
 	@echo "... child3"
@@ -439,6 +468,7 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... kp"
 	@echo "... lab1_test"
 	@echo "... lab2"
 	@echo "... lab3"
@@ -447,8 +477,6 @@ help:
 	@echo "... lab5_1"
 	@echo "... lab5_2"
 	@echo "... lab5_test"
-	@echo "... lab6_1"
-	@echo "... lab6_2"
 	@echo "... math"
 .PHONY : help
 

@@ -6,5 +6,5 @@ CXX_DEFINES = -Dmath_EXPORTS
 
 CXX_INCLUDES = 
 
-CXX_FLAGS = -fPIC -Wall -lstdc++fs -pthread
+CXX_FLAGS = -fPIC -Wall -lstdc++fs
 

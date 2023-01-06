@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/nucyc/OS_mai/tests/../lab5/include -isystem /home/nucyc/OS_mai/build/_deps/googletest-src/googletest/include -isystem /home/nucyc/OS_mai/build/_deps/googletest-src/googletest
 
-CXX_FLAGS = -Wall -lstdc++fs -pthread -std=gnu++14
+CXX_FLAGS = -Wall -lstdc++fs -std=gnu++14
 

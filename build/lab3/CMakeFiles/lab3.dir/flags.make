@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/nucyc/OS_mai/lab3/include
 
-CXX_FLAGS = -Wall -lstdc++fs -pthread
+CXX_FLAGS = -Wall -lstdc++fs
 
