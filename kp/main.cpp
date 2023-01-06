@@ -34,6 +34,7 @@ int main()
     pipe(fdAC);
     pipe(fdAB);
     pipe(fdBC);
+	 // Удалить именованный семафор
     sem_unlink("_semA");
     sem_unlink("_semB");
     sem_unlink("_semC");
