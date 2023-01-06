@@ -4,12 +4,12 @@ add_executable(child11
 	src/child1.cpp
 )
 
-target_include_directories(child1 PRIVATE include)
+target_include_directories(child11 PRIVATE include)
 
 add_executable(child22
 	src/child2.cpp
 )
-target_include_directories(child2 PRIVATE include)
+target_include_directories(child22 PRIVATE include)
 
 add_executable(lab2
 	main.cpp
@@ -19,4 +19,4 @@ add_executable(lab2
 
 target_include_directories(lab2 PRIVATE include)
 
-add_dependencies(lab2 child1 child2)
+add_dependencies(lab2 child11 child22)
