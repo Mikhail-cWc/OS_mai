@@ -1,30 +1,4 @@
-#include <iostream>
-#include <unistd.h>
-#include <fcntl.h>
-#include <semaphore.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <signal.h>
-#include <stdarg.h>
-
-int human_get(sem_t *semaphore)
-{
-    int s;
-    sem_getvalue(semaphore, &s);
-    return s;
-}
-
-void human_set(sem_t *semaphore, int n)
-{
-    while (human_get(semaphore) < n)
-    {
-        sem_post(semaphore);
-    }
-    while (human_get(semaphore) > n)
-    {
-        sem_wait(semaphore);
-    }
-}
+#include "utils.h"
 
 int main()
 {
