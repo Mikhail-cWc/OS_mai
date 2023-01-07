@@ -73,10 +73,10 @@ int main(int argc, char* argv[]) {
                 send_message(parent_socket, "OK: " + std::to_string(cur_id) + ": " + std::to_string(sum));
             }
 
-            else if (cmd == "heartbeat") {
+            else if (cmd == "pingall") {
                 std::string reply;
                 if (child_id != -1) {
-                    send_message(child_socket, std::to_string(child_id) + " heartbeat");
+                    send_message(child_socket, std::to_string(child_id) + " pingall");
                     std::string msg = receive_message(child_socket);
                     reply += " " + msg;
                 }

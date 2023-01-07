@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/nucyc/OS_mai/kp/main.cpp" "kp/CMakeFiles/kp.dir/main.cpp.o" "gcc" "kp/CMakeFiles/kp.dir/main.cpp.o.d"
+  "/home/nucyc/OS_mai/kp/src/utils.cpp" "kp/CMakeFiles/kp.dir/src/utils.cpp.o" "gcc" "kp/CMakeFiles/kp.dir/src/utils.cpp.o.d"
   )
 
 # Targets to which this target links.

@@ -227,78 +227,6 @@ kp/fast:
 	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/kp.dir/build.make kp/CMakeFiles/kp.dir/build
 .PHONY : kp/fast
 
-A.o: A.cpp.o
-.PHONY : A.o
-
-# target to build an object file
-A.cpp.o:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/A.cpp.o
-.PHONY : A.cpp.o
-
-A.i: A.cpp.i
-.PHONY : A.i
-
-# target to preprocess a source file
-A.cpp.i:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/A.cpp.i
-.PHONY : A.cpp.i
-
-A.s: A.cpp.s
-.PHONY : A.s
-
-# target to generate assembly for a file
-A.cpp.s:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/A.cpp.s
-.PHONY : A.cpp.s
-
-B.o: B.cpp.o
-.PHONY : B.o
-
-# target to build an object file
-B.cpp.o:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/B.cpp.o
-.PHONY : B.cpp.o
-
-B.i: B.cpp.i
-.PHONY : B.i
-
-# target to preprocess a source file
-B.cpp.i:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/B.cpp.i
-.PHONY : B.cpp.i
-
-B.s: B.cpp.s
-.PHONY : B.s
-
-# target to generate assembly for a file
-B.cpp.s:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/B.cpp.s
-.PHONY : B.cpp.s
-
-C.o: C.cpp.o
-.PHONY : C.o
-
-# target to build an object file
-C.cpp.o:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/C.cpp.o
-.PHONY : C.cpp.o
-
-C.i: C.cpp.i
-.PHONY : C.i
-
-# target to preprocess a source file
-C.cpp.i:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/C.cpp.i
-.PHONY : C.cpp.i
-
-C.s: C.cpp.s
-.PHONY : C.s
-
-# target to generate assembly for a file
-C.cpp.s:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/C.cpp.s
-.PHONY : C.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -323,6 +251,111 @@ main.cpp.s:
 	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/kp.dir/build.make kp/CMakeFiles/kp.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/A.o: src/A.cpp.o
+.PHONY : src/A.o
+
+# target to build an object file
+src/A.cpp.o:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/src/A.cpp.o
+.PHONY : src/A.cpp.o
+
+src/A.i: src/A.cpp.i
+.PHONY : src/A.i
+
+# target to preprocess a source file
+src/A.cpp.i:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/src/A.cpp.i
+.PHONY : src/A.cpp.i
+
+src/A.s: src/A.cpp.s
+.PHONY : src/A.s
+
+# target to generate assembly for a file
+src/A.cpp.s:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/src/A.cpp.s
+.PHONY : src/A.cpp.s
+
+src/B.o: src/B.cpp.o
+.PHONY : src/B.o
+
+# target to build an object file
+src/B.cpp.o:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/src/B.cpp.o
+.PHONY : src/B.cpp.o
+
+src/B.i: src/B.cpp.i
+.PHONY : src/B.i
+
+# target to preprocess a source file
+src/B.cpp.i:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/src/B.cpp.i
+.PHONY : src/B.cpp.i
+
+src/B.s: src/B.cpp.s
+.PHONY : src/B.s
+
+# target to generate assembly for a file
+src/B.cpp.s:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/src/B.cpp.s
+.PHONY : src/B.cpp.s
+
+src/C.o: src/C.cpp.o
+.PHONY : src/C.o
+
+# target to build an object file
+src/C.cpp.o:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/C.cpp.o
+.PHONY : src/C.cpp.o
+
+src/C.i: src/C.cpp.i
+.PHONY : src/C.i
+
+# target to preprocess a source file
+src/C.cpp.i:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/C.cpp.i
+.PHONY : src/C.cpp.i
+
+src/C.s: src/C.cpp.s
+.PHONY : src/C.s
+
+# target to generate assembly for a file
+src/C.cpp.s:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/C.cpp.s
+.PHONY : src/C.cpp.s
+
+src/utils.o: src/utils.cpp.o
+.PHONY : src/utils.o
+
+# target to build an object file
+src/utils.cpp.o:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/src/utils.cpp.o
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/src/utils.cpp.o
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/utils.cpp.o
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/kp.dir/build.make kp/CMakeFiles/kp.dir/src/utils.cpp.o
+.PHONY : src/utils.cpp.o
+
+src/utils.i: src/utils.cpp.i
+.PHONY : src/utils.i
+
+# target to preprocess a source file
+src/utils.cpp.i:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/src/utils.cpp.i
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/src/utils.cpp.i
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/utils.cpp.i
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/kp.dir/build.make kp/CMakeFiles/kp.dir/src/utils.cpp.i
+.PHONY : src/utils.cpp.i
+
+src/utils.s: src/utils.cpp.s
+.PHONY : src/utils.s
+
+# target to generate assembly for a file
+src/utils.cpp.s:
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/src/utils.cpp.s
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/src/utils.cpp.s
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/utils.cpp.s
+	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/kp.dir/build.make kp/CMakeFiles/kp.dir/src/utils.cpp.s
+.PHONY : src/utils.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -340,18 +373,21 @@ help:
 	@echo "... B"
 	@echo "... C"
 	@echo "... kp"
-	@echo "... A.o"
-	@echo "... A.i"
-	@echo "... A.s"
-	@echo "... B.o"
-	@echo "... B.i"
-	@echo "... B.s"
-	@echo "... C.o"
-	@echo "... C.i"
-	@echo "... C.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/A.o"
+	@echo "... src/A.i"
+	@echo "... src/A.s"
+	@echo "... src/B.o"
+	@echo "... src/B.i"
+	@echo "... src/B.s"
+	@echo "... src/C.o"
+	@echo "... src/C.i"
+	@echo "... src/C.s"
+	@echo "... src/utils.o"
+	@echo "... src/utils.i"
+	@echo "... src/utils.s"
 .PHONY : help
 
 

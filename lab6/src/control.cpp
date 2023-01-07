@@ -89,11 +89,11 @@ int main() {
                 }
             }
         }
-        else if (cmd == "heartbeat") {
+        else if (cmd == "pingall") {
             std::set<int> available_nodes;
             for (size_t i = 0; i < branches.size(); ++i) {
                 int first_node_id = network.get_first_id(i);
-                send_message(branches[i], std::to_string(first_node_id) + " heartbeat");
+                send_message(branches[i], std::to_string(first_node_id) + " pingall");
                 
                 std::string received_message = receive_message(branches[i]);
                 std::istringstream reply(received_message);
