@@ -1,0 +1,1 @@
+/usr/bin/g++ CMakeFiles/lab5_test.dir/lab5_test.cpp.o CMakeFiles/lab5_test.dir/__/lab5/src/programm1.cpp.o CMakeFiles/lab5_test.dir/__/lab5/src/programm2.cpp.o -o lab5_test  -lC:/OS_mai/lab5/lib/libmath.dll ../lib/libgtest_main.a ../lib/libgtest.a 

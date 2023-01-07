@@ -1,0 +1,1 @@
+/usr/bin/g++ CMakeFiles/C.dir/src/C.cpp.o -o C 
