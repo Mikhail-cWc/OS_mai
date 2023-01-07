@@ -1,1 +1,0 @@
-/usr/bin/g++ CMakeFiles/C.dir/src/C.cpp.o CMakeFiles/C.dir/src/utils.cpp.o -o C 
