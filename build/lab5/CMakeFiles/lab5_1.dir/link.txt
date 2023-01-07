@@ -1,1 +1,0 @@
-/usr/bin/g++ CMakeFiles/lab5_1.dir/main1.cpp.o CMakeFiles/lab5_1.dir/src/programm1.cpp.o -o lab5_1  -lC:/OS_mai/lab5/lib/libmath.dll 

@@ -1,1 +1,0 @@
-/usr/bin/g++ CMakeFiles/child22.dir/src/child2.cpp.o -o child22 

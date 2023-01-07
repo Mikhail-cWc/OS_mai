@@ -1,1 +1,0 @@
-/usr/bin/g++ CMakeFiles/child4.dir/src/child2.cpp.o -o child4 

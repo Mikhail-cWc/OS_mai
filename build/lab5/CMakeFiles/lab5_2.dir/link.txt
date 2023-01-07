@@ -1,1 +1,0 @@
-/usr/bin/g++ CMakeFiles/lab5_2.dir/main2.cpp.o CMakeFiles/lab5_2.dir/src/programm2.cpp.o -o lab5_2 
