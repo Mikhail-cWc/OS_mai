@@ -323,39 +323,6 @@ src/C.cpp.s:
 	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/C.cpp.s
 .PHONY : src/C.cpp.s
 
-src/utils.o: src/utils.cpp.o
-.PHONY : src/utils.o
-
-# target to build an object file
-src/utils.cpp.o:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/src/utils.cpp.o
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/src/utils.cpp.o
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/utils.cpp.o
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/kp.dir/build.make kp/CMakeFiles/kp.dir/src/utils.cpp.o
-.PHONY : src/utils.cpp.o
-
-src/utils.i: src/utils.cpp.i
-.PHONY : src/utils.i
-
-# target to preprocess a source file
-src/utils.cpp.i:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/src/utils.cpp.i
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/src/utils.cpp.i
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/utils.cpp.i
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/kp.dir/build.make kp/CMakeFiles/kp.dir/src/utils.cpp.i
-.PHONY : src/utils.cpp.i
-
-src/utils.s: src/utils.cpp.s
-.PHONY : src/utils.s
-
-# target to generate assembly for a file
-src/utils.cpp.s:
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/A.dir/build.make kp/CMakeFiles/A.dir/src/utils.cpp.s
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/B.dir/build.make kp/CMakeFiles/B.dir/src/utils.cpp.s
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/C.dir/build.make kp/CMakeFiles/C.dir/src/utils.cpp.s
-	cd /home/nucyc/OS_mai/build && $(MAKE) $(MAKESILENT) -f kp/CMakeFiles/kp.dir/build.make kp/CMakeFiles/kp.dir/src/utils.cpp.s
-.PHONY : src/utils.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -385,9 +352,6 @@ help:
 	@echo "... src/C.o"
 	@echo "... src/C.i"
 	@echo "... src/C.s"
-	@echo "... src/utils.o"
-	@echo "... src/utils.i"
-	@echo "... src/utils.s"
 .PHONY : help
 
 

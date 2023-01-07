@@ -13,14 +13,7 @@ int main(int args, char* argv[])
     sem_t* semC = sem_open("_semC", O_CREAT, 0777, 0);
     while(1)
     {
-        while(human_get(semC) == 0)
-        {
-            continue;
-        }
-        if (human_get(semC) == 2)
-        {
-            break;
-        }
+
         int size;
         std::string str;
         read(fdAC[0], &size, sizeof(int));
@@ -35,8 +28,9 @@ int main(int args, char* argv[])
         ++t;
         std::cout << str << std::endl;
         write(fdBC[1], &t, sizeof(int));
-        human_set(semB, 1);
-        human_set(semC, 0);
+        
+        sem_post(semB);
+        sem_wait(semC);
     }
     sem_close(semA);
     sem_close(semB);

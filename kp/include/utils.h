@@ -10,8 +10,5 @@
 #include <stdarg.h>
 #include <signal.h>
 
-void human_set(sem_t *semaphore, int n);
-int human_get(sem_t *semaphore);
-
 
 #endif // OS_LABS_PARENT_H

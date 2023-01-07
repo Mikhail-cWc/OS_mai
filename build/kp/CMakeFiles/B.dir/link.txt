@@ -1,1 +1,1 @@
-/usr/bin/g++ CMakeFiles/B.dir/src/B.cpp.o CMakeFiles/B.dir/src/utils.cpp.o -o B 
+/usr/bin/g++ CMakeFiles/B.dir/src/B.cpp.o -o B 

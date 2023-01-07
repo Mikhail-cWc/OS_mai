@@ -15,13 +15,7 @@ int main(int args, char* argv[])
     {
         std::string str;
         getline(std::cin, str);
-        if (str == "END")
-        {
-            human_set(semA, 2);
-            human_set(semB, 2);
-            human_set(semC, 2);
-            break;
-        }
+       
         int size = str.length();
         write(fdAC[1], &size, sizeof(int));
         write(fdAB[1], &size, sizeof(int));
@@ -29,12 +23,8 @@ int main(int args, char* argv[])
         {
             write(fdAC[1], &str[i], sizeof(char));
         }
-        human_set(semB, 1);
-        human_set(semA, 0);
-        while (human_get(semA) == 0)
-        {
-            continue;
-        }
+        sem_post(semB);
+        sem_wait(semA);
     }
     sem_close(semA);
     sem_destroy(semA);

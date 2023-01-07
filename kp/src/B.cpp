@@ -13,39 +13,19 @@ int main(int args, char* argv[])
     sem_t* semC = sem_open("_semC", O_CREAT, 0777, 0);
     while (1)
     {
-        while(human_get(semB) == 0)
-        {
-            continue;
-        }
-        if (human_get(semB) == 2)
-        {
-            break;
-        }
         int size;
         read(fdAB[0], &size, sizeof(int));
         std::cout << "Number of input symbols is " << size << std::endl;
-        human_set(semC, 1);
-        human_set(semB, 0);
-        while (human_get(semB) == 0)
-        {
-            continue;
-        }
-        if (human_get(semB) == 2)
-        {
-            break;
-        }
+        
+        sem_post(semC);
+        sem_wait(semB);
+
         read(fdBC[0], &size, sizeof(int));
         std::cout << "Number of output symbols is " << size << std::endl;
-        human_set(semA, 1);
-        human_set(semB, 0);
-        while(human_get(semB) == 0)
-        {
-            continue;
-        }
-        if (human_get(semB) == 2)
-        {
-            break;
-        }
+        
+        sem_post(semA);
+        sem_wait(semB);
+       
     }
     sem_close(semA);
     sem_close(semB);
